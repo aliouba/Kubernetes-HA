@@ -1,5 +1,5 @@
 # Prerequisites
 # Prepare the Hosts
-# ETCD Cluster
+# ETCD HA
 # Master HA
 # Add new Minions
