@@ -1,4 +1,4 @@
-# 1.  Prerequisites
+# 1. Prerequisites
 
 setenforce 0
 
@@ -6,7 +6,7 @@ systemctl disable iptables-services firewalld
 
 systemctl stop iptables-services firewalld
 
-2. Prepare the Hosts
+# 2. Prepare the Hosts
 
 echo "
 172.31.123.251 node1
@@ -21,6 +21,6 @@ echo "
 
 172.31.21.116 workspace" >> /etc/hosts
 
-3. ETCD HA
-4. Master HA
-5. Add new Minions
+# 3. ETCD HA
+# 4. Master HA
+# 5. Add new Minions
