@@ -131,9 +131,9 @@ curl http://master1:2379/v2/members
 
 ]}
 
-# Start ETCD at startup
+# 4. Start ETCD at startup
 
-Create the systemd config file
+# Create the systemd config file
 
 echo "
 
@@ -161,12 +161,12 @@ WantedBy=default.target
 
 " > /etc/systemd/system/container-etcd.service
 
-Enable Service
+# Enable Services
 
 systemctl daemon-reload
 systemctl enable container-etcd
 
-# 4. Flannel 
+# 5. Flannel 
 
 # Installation
 
@@ -177,6 +177,6 @@ systemctl flanneld docker
 
 # Test Flannel
 
-# 5. Master HA
+# 6. Master HA
 
-# 6. Add new Minions
+# 7. Add new Minions
