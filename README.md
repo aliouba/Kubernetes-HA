@@ -60,7 +60,7 @@ export HOST_1=master1
 
 export HOST_2=master2
 
-export HOST_3=master2
+export HOST_3=master3
 
 export DATA_DIR=/var/lib/etcd
 
