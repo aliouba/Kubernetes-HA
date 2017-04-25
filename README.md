@@ -131,5 +131,52 @@ curl http://master1:2379/v2/members
 
 ]}
 
-# 4. Master HA
-# 5. Add new Minions
+# Start ETCD at startup
+
+Create the systemd config file
+
+echo "
+
+[Unit]
+
+Description=Docker Container ETCD
+
+Requires=docker.service
+
+After=docker.service
+
+
+[Service]
+
+Restart=always
+
+ExecStart=/usr/bin/docker start etcd
+
+ExecStop=/usr/bin/docker stop -t etcd
+
+
+[Install]
+
+WantedBy=default.target
+
+" > /etc/systemd/system/container-etcd.service
+
+Enable Service
+
+systemctl daemon-reload
+systemctl enable container-etcd
+
+# 4. Flannel 
+
+# Installation
+
+yum install flannel -y
+systemctl flanneld docker
+
+# Configuration
+
+# Test Flannel
+
+# 5. Master HA
+
+# 6. Add new Minions
