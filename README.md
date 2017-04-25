@@ -39,5 +39,35 @@ systemctl start docker
 systemctl status docker -l
 
 # 3. ETCD HA
+
+We will install our ETCD cluster on the master (master1,master2 and master3).
+
+# Define the following var environments on each master:
+
+export ETCD_VERSION=v3.1.5
+
+export TOKEN=my-etcd-token
+
+export CLUSTER_STATE=new
+
+export NAME_1=etcd-node-1
+
+export NAME_2=etcd-node-2
+
+export NAME_3=etcd-node-3
+
+export HOST_1=master1
+
+export HOST_2=master2
+
+export HOST_3=master2
+
+export DATA_DIR=/var/lib/etcd
+
+export CLUSTER=${NAME_1}=http://${HOST_1}:2380,${NAME_2}=http://${HOST_2}:2380,${NAME_3}=http://${HOST_3}:2380
+
+
+
+
 # 4. Master HA
 # 5. Add new Minions
