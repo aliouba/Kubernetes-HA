@@ -66,8 +66,26 @@ export DATA_DIR=/var/lib/etcd
 
 export CLUSTER=${NAME_1}=http://${HOST_1}:2380,${NAME_2}=http://${HOST_2}:2380,${NAME_3}=http://${HOST_3}:2380
 
+# RUN ETCD on Master1
 
+export THIS_NAME=${NAME_1}
 
+export THIS_IP=${HOST_1}
+
+docker run --net=host \
+    --volume=${DATA_DIR}:/etcd-data \
+    --name etcd quay.io/coreos/etcd:${ETCD_VERSION} \
+	/usr/local/bin/etcd \
+	--data-dir=/etcd-data --name ${THIS_NAME} \
+    --name ${THIS_NAME} \
+	--initial-advertise-peer-urls http://${THIS_IP}:2380 --listen-peer-urls http://${THIS_IP}:2380 \
+	--advertise-client-urls http://${THIS_IP}:2379 --listen-client-urls http://${THIS_IP}:2379,http://127.0.0.1:2379 \
+	--initial-cluster ${CLUSTER} \
+	--initial-cluster-state ${CLUSTER_STATE} --initial-cluster-token ${TOKEN}
+
+# RUN ETCD on Master2
+
+# RUN ETCD on Master3
 
 # 4. Master HA
 # 5. Add new Minions
