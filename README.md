@@ -28,6 +28,16 @@ echo "
 
 172.31.21.116 node3" >> /etc/hosts
 
+# Docker Installation on all nodes
+
+yum install docker -y
+
+systemctl enable docker
+
+systemctl start docker
+
+systemctl status docker -l
+
 # 3. ETCD HA
 # 4. Master HA
 # 5. Add new Minions
