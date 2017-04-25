@@ -279,6 +279,9 @@ cd kube-tls/
 
 ./apiserver.sh masterIP/Hostname
 
+chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
+
+chown root:root /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
 
 # Kubelet Installation
 
