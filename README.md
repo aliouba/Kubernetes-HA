@@ -199,6 +199,7 @@ FLANNEL_ETCD_PREFIX="/kube1/network"
 # Start Flannel (All nodes) et restart Docker
 
 systemctl start flanneld
+
 systemctl status flanneld -l
 
 systemctl restart docker
