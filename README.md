@@ -273,7 +273,12 @@ curl -L http://master1:2379/v2/keys/kube1/network/subnets | python -mjson.tool
 
 # 6. Master HA
 
-# TLS Assets
+# TLS Assets (All master)
+
+cd kube-tls/
+
+./apiserver.sh masterIP/Hostname
+
 
 # Kubelet Installation
 
