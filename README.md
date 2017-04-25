@@ -12,7 +12,7 @@ systemctl stop iptables-services firewalld
 
 # 2. Prepare the Hosts
 
-# Put Ip/hostname of all cluster nodes in /etc/hosts in each host, e.g:
+# Put Ip/hostname of all cluster nodes (/etc/hosts) in each host:
 
 echo "
 
