@@ -1,6 +1,10 @@
 # 1. Prerequisites
 
-setenforce 0
+# Deactivate SELINUS
+
+setenforce 0 (Put SELINUX to disabled in /etc/selinux/config then restart the VM)
+
+# Deactivate Firewalld and iptables-services
 
 systemctl disable iptables-services firewalld
 
