@@ -167,9 +167,9 @@ systemctl daemon-reload
 
 systemctl enable container-etcd
 
-# 5. Flannel (All nodes) 
+# 5. Flannel 
 
-# Installation 
+# Installation (All nodes) 
 
 yum install flannel -y
 
@@ -178,14 +178,32 @@ systemctl enable flanneld
 # Determine Flannel Parameters
 
 * Network Cidr, e.g: 92.168.0.0/16
+* Network Name: e.g kube1
 * Subnet length (segements), e.g /24
 * Backend Type: vxlan or udp
 
-# Configuration
+# Save Flannel parametes in our ETCD
 
+etcdctl mkdir /kube1/network
 
+etcdctl mk /kube1/network/config "{ \"Network\": \"192.168.0.0/16\", \"SubnetLen\": 24, \"Backend\": { \"Type\": \"vxlan\" } }"
 
-# Test Flannel
+# Configuration (All nodes)
+
+ vi /etc/sysconfig/flanneld
+ 
+FLANNEL_ETCD_ENDPOINTS="http://master1:2379,http://master2:2379,http://master3:2379"
+
+FLANNEL_ETCD_PREFIX="/kube1/network"
+
+# Start Flannel (All nodes) et restart Docker
+
+systemctl start flanneld
+systemctl status flanneld -l
+
+systemctl restart docker
+
+# Test Flannel 
 
 # 6. Master HA
 
