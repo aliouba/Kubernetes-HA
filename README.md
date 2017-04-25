@@ -117,5 +117,19 @@ docker run --net=host \
 	--initial-cluster ${CLUSTER} \
 	--initial-cluster-state ${CLUSTER_STATE} --initial-cluster-token ${TOKEN}
 
+# Test ETCD installation 
+
+curl http://master1:2379/v2/members
+
+{"members":[
+
+{"id":"ea8af9652ff027","name":"etcd-node-1","peerURLs":["http://master1:2380"],"clientURLs":["http://master1:2379"]},
+
+{"id":"7b6c720f0c92a3cf","name":"etcd-node-2","peerURLs":["http://master2:2380"],"clientURLs":["http://master2:2379"]},	
+
+{"id":"c17975036fa896c0","name":"etcd-node-3","peerURLs":["http://master3:2380"],"clientURLs":["http://master3:2379"]}
+
+]}
+
 # 4. Master HA
 # 5. Add new Minions
