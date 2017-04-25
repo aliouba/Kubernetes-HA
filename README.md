@@ -175,7 +175,15 @@ yum install flannel -y
 
 systemctl enable flanneld
 
+# Determine Flannel Parameters
+
+* Network Cidr, e.g: 92.168.0.0/16
+* Subnet length (segements), e.g /24
+* Backend Type: vxlan or udp
+
 # Configuration
+
+
 
 # Test Flannel
 
