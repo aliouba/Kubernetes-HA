@@ -131,7 +131,7 @@ curl http://master1:2379/v2/members
 
 ]}
 
-# 4. Start ETCD at startup
+# 4. Start ETCD at startup (Master nodes)
 
 # Create the systemd config file
 
@@ -167,12 +167,13 @@ systemctl daemon-reload
 
 systemctl enable container-etcd
 
-# 5. Flannel 
+# 5. Flannel (All nodes) 
 
-# Installation
+# Installation 
 
 yum install flannel -y
-systemctl flanneld docker
+
+systemctl enable flanneld
 
 # Configuration
 
