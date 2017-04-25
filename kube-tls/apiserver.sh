@@ -23,8 +23,8 @@ openssl req -new \
 	-config /etc/kubernetes/ssl/apiserver/apiserver-openssl.cnf;
 
 openssl x509 -req -in /etc/kubernetes/ssl/apiserver/apiserver.csr \
-	-CA /etc/kubernetes/ssl/ca/ca.pem \
-	-CAkey /etc/kubernetes/ssl/ca/ca-key.pem \
+	-CA ca.pem \
+	-CAkey ca-key.pem \
 	-CAcreateserial \
 	-out /etc/kubernetes/ssl/apiserver/apiserver.pem \
 	-days 365 \
