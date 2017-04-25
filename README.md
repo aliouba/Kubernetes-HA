@@ -206,6 +206,71 @@ systemctl restart docker
 
 # Test Flannel 
 
+curl -L http://master1:2379/v2/keys/kube1/network/subnets | python -mjson.tool
+
+{
+
+    "action": "get",
+    "node": {
+        "createdIndex": 19,
+        "dir": true,
+        "key": "/kube1/network/subnets",
+        "modifiedIndex": 19,
+        "nodes": [
+            {
+                "createdIndex": 23,
+                "expiration": "2017-04-26T12:24:13.459780122Z",
+                "key": "/kube1/network/subnets/192.168.74.0-24",
+                "modifiedIndex": 23,
+                "ttl": 86295,
+                "value": "{\"PublicIP\":\"172.31.115.69\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"ea:13:52:35:7a:ac\"}}"
+            },
+            {
+                "createdIndex": 25,
+                "expiration": "2017-04-26T12:24:16.013425132Z",
+                "key": "/kube1/network/subnets/192.168.76.0-24",
+                "modifiedIndex": 25,
+                "ttl": 86298,
+                "value": "{\"PublicIP\":\"172.31.106.23\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"0e:8d:92:fe:a3:ac\"}}"
+            },
+            {
+                "createdIndex": 26,
+                "expiration": "2017-04-26T12:24:18.133121342Z",
+                "key": "/kube1/network/subnets/192.168.89.0-24",
+                "modifiedIndex": 26,
+                "ttl": 86300,
+                "value": "{\"PublicIP\":\"172.31.21.116\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"f2:f3:0c:6e:a3:62\"}}"
+            },
+            {
+                "createdIndex": 19,
+                "expiration": "2017-04-26T12:17:35.129928801Z",
+                "key": "/kube1/network/subnets/192.168.87.0-24",
+                "modifiedIndex": 19,
+                "ttl": 85897,
+                "value": "{\"PublicIP\":\"172.31.23.4\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"72:37:cd:18:58:60\"}}"
+            },
+            {
+                "createdIndex": 21,
+                "expiration": "2017-04-26T12:24:06.285121518Z",
+                "key": "/kube1/network/subnets/192.168.13.0-24",
+                "modifiedIndex": 21,
+                "ttl": 86288,
+                "value": "{\"PublicIP\":\"172.31.112.238\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"32:db:4f:2b:65:10\"}}"
+            },
+            {
+                "createdIndex": 22,
+                "expiration": "2017-04-26T12:24:10.814833173Z",
+                "key": "/kube1/network/subnets/192.168.75.0-24",
+                "modifiedIndex": 22,
+                "ttl": 86293,
+                "value": "{\"PublicIP\":\"172.31.16.190\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"d6:0c:dc:97:b6:65\"}}"
+            }
+        ]
+    }
+}
+
+
+
 # 6. Master HA
 
 # 7. Add new Minions
