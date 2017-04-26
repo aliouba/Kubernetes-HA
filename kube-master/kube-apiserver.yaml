@@ -16,8 +16,8 @@ spec:
       --etcd-servers=http://master1:2379,http://master2:2379,http://master3:2379
       --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota
       --service-cluster-ip-range=10.0.0.0/16 
-      --client-ca-file=/etc/kubernetes/ssl/apiserver/ca.crt
       --cluster-name=kube-bmx-dbaas
+      --client-ca-file=/etc/kubernetes/ssl/apiserver/ca.crt
       --tls-cert-file=/etc/kubernetes/ssl/apiserver/server.cert 
       --tls-private-key-file=/etc/kubernetes/ssl/apiserver/server.key
       --secure-port=443 
