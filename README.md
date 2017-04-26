@@ -283,8 +283,19 @@ chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
 
 chown root:root /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
 
+# Apiserver, scheduler and controller Installation
+
+cp -r ../kube-master/*.yaml /etc/kubernetes/manifests/
+
 # Kubelet Installation
 
-# Apiserver Installation
+wget https://dl.k8s.io/v1.6.1/kubernetes-server-linux-amd64.tar.gz -P /opt/
+
+cd /opt
+
+tar -xvf kubernetes-server-linux-amd64.tar.gz
+
+rm kubernetes-server-linux-amd64.tar.gz
+
 
 # 7. Add new Minions
