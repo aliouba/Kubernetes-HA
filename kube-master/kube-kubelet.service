@@ -1,0 +1,22 @@
+[Unit]
+Description=Kubernetes Kubelet
+After=docker.service
+Wants=docker.service
+
+[Service]
+ExecStart=/opt/kubernetes/kubelet \
+--address=$THIS_IP \
+--port=10250 \
+--allow-privileged=true \
+--hostname_override=kubernetes-master0.nova-cluster.local \
+--config=/etc/kubernetes/manifests \
+--cluster_dns=10.0.0.10 \
+--cluster_domain=cluster.local \
+--config=/etc/kubernetes/manifests \
+--register-node=false \
+--logtostderr=true
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
