@@ -42,7 +42,7 @@ spec:
       readOnly: true
   volumes:
   - hostPath:
-      path: /etc/kubernetes/ssl/apiserver/apiserver
+      path: /etc/kubernetes/ssl/apiserver
     name: ssl-certs-kubernetes
   - hostPath:
       path: /etc/kubernetes
