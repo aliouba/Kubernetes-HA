@@ -21,7 +21,7 @@ spec:
       --tls-cert-file=/etc/kubernetes/ssl/apiserver/server.cert 
       --tls-private-key-file=/etc/kubernetes/ssl/apiserver/server.key
       --secure-port=443 
-      --token-auth-file=/srv/kubernetes/known_tokens.csv  --v=2
+      --v=2
       --allow-privileged=False 1>>/var/log/kube-apiserver.log 2>&1
     ports:
     - containerPort: 443
