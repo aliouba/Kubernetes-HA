@@ -1,28 +1,27 @@
+---
 apiVersion: v1
 kind: Pod
 metadata:
   name: kube-apiserver
+  namespace: kube-system
 spec:
   hostNetwork: true
   containers:
   - name: kube-apiserver
-    image: gcr.io/google_containers/kube-apiserver:v1.6.2
+    image: gcr.io/google_containers/hyperkube:v1.6.2
     command:
-    - /bin/sh
-    - -c
-    - /usr/local/bin/kube-apiserver 
-      --insecure-bind-address=$THIS_IP
-      --bind-address=0.0.0.0
-      --etcd-servers=http://master1:2379,http://master2:2379,http://master3:2379
-      --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota
-      --service-cluster-ip-range=10.0.0.0/16 
-      --cluster-name=kube-bmx-dbaas
-      --client-ca-file=/etc/kubernetes/ssl/ca.pem
-      --tls-cert-file=/etc/kubernetes/ssl/apiserver/apiserver.pem
-      --tls-private-key-file=/etc/kubernetes/ssl/apiserver/apiserver-key.pem
-      --secure-port=443 
-      --v=2
-      --allow-privileged=False 1>>/var/log/kube-apiserver.log 2>&1
+    - /hyperkube
+    - apiserver
+    - --bind-address=0.0.0.0
+    - --insecure-bind-address=$THIS_IP
+    - --etcd_servers=http://master1:2379,http://master2:2379,http://master3:2379
+    - --allow-privileged=true
+    - --service-cluster-ip-range=10.0.0.1/24
+    - --client-ca-file=/etc/kubernetes/ssl/ca.pem
+    - --tls-cert-file=/etc/kubernetes/ssl/apiserver/apiserver.pem
+    - --tls-private-key-file=/etc/kubernetes/ssl/apiserver/apiserver-key.pem
+    - --secure_port=443
+    - --admission_control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota
     ports:
     - containerPort: 443
       hostPort: 443
@@ -34,6 +33,9 @@ spec:
     - mountPath: /etc/kubernetes/ssl
       name: ssl-certs-kubernetes
       readOnly: true
+    - mountPath: /etc/ssl/certs
+      name: ssl-certs-host
+      readOnly: true
     - mountPath: /etc/kubernetes
       name: kubernetes-configfiles
       readOnly: true
@@ -41,6 +43,9 @@ spec:
   - hostPath:
       path: /etc/kubernetes/ssl
     name: ssl-certs-kubernetes
+  - hostPath:
+      path: /usr/share/ca-certificates
+    name: ssl-certs-host
   - hostPath:
       path: /etc/kubernetes
     name: kubernetes-configfiles
