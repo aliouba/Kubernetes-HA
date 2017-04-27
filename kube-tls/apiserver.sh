@@ -10,7 +10,8 @@ K8S_API_SERVER_HOSTNAME=$1
 
 mkdir -p /etc/kubernetes/ssl/apiserver/;
 cp apiserver-openssl.cnf /etc/kubernetes/ssl/apiserver/;
-
+cp ca.pem /etc/kubernetes/ssl/;
+cp ca-key.pem /etc/kubernetes/ssl/;
 # Place the actual api server hostname in the open ssl config file.
 sed -i -e "s/K8S_API_SERVER_HOSTNAME/${K8S_API_SERVER_HOSTNAME}/g" /etc/kubernetes/ssl/apiserver/apiserver-openssl.cnf;
 
@@ -23,8 +24,8 @@ openssl req -new \
 	-config /etc/kubernetes/ssl/apiserver/apiserver-openssl.cnf;
 
 openssl x509 -req -in /etc/kubernetes/ssl/apiserver/apiserver.csr \
-	-CA ca.pem \
-	-CAkey ca-key.pem \
+	-CA /etc/kubernetes/ssl/ca.pem \
+	-CAkey /etc/kubernetes/ssl/ca-key.pem \
 	-CAcreateserial \
 	-out /etc/kubernetes/ssl/apiserver/apiserver.pem \
 	-days 365 \
