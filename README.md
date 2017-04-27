@@ -273,6 +273,10 @@ curl -L http://master1:2379/v2/keys/kube1/network/subnets | python -mjson.tool
 
 # 6. Master HA
 
+export MASTERID=masterID
+
+export THIS_IP=IP
+
 # TLS Assets (on each master)
 
 cd kube-tls/
@@ -297,7 +301,5 @@ tar -xvf kubernetes-server-linux-amd64.tar.gz
 
 rm kubernetes-server-linux-amd64.tar.gz
 
-export MASTERID=masterID
 
-export THIS_IP=IP
 # 7. Add new Minions
