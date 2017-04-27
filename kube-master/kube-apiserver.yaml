@@ -33,7 +33,6 @@ spec:
     - mountPath: /etc/kubernetes/ssl
       name: ssl-certs-kubernetes
       readOnly: true
-      readOnly: true
     - mountPath: /etc/kubernetes
       name: kubernetes-configfiles
       readOnly: true
