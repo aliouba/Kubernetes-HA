@@ -296,6 +296,7 @@ chown root:root /etc/kubernetes/ssl/ca-key.pem
 # Apiserver, scheduler and controller Installation
 
 mkdir -p /etc/kubernetes/manifests/
+
 cp -r ../kube-master/*.yaml /etc/kubernetes/manifests/
 
 # Kubelet Installation
