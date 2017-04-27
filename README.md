@@ -301,7 +301,7 @@ cp -r ../kube-master/*.yaml /etc/kubernetes/manifests/
 
 # Kubelet Installation
 
-wget https://dl.k8s.io/v1.6.1/kubernetes-server-linux-amd64.tar.gz -P /opt/
+wget https://dl.k8s.io/v1.6.2/kubernetes-server-linux-amd64.tar.gz -P /opt/
 
 cd /opt
 
