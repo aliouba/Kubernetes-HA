@@ -281,7 +281,7 @@ export THIS_IP=IP
 
 cd kube-tls/
 
-./apiserver.sh masterIP/Hostname
+./apiserver.sh $THIS_IP
 
 chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
 
