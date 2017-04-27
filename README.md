@@ -279,7 +279,9 @@ export THIS_IP=IP
 
 # TLS Assets (on each master)
 
-cd kube-tls/
+git clone https://github.com/aliouba/Kubernetes-HA
+
+cd Kubernetes-HA/kube-tls/
 
 ./apiserver.sh $THIS_IP
 
