@@ -287,6 +287,10 @@ chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
 
 chown root:root /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
 
+chmod 600 /etc/kubernetes/ssl/ca-key.pem
+
+chown root:root /etc/kubernetes/ssl/ca-key.pem
+
 # Apiserver, scheduler and controller Installation
 
 cp -r ../kube-master/*.yaml /etc/kubernetes/manifests/
