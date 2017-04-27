@@ -299,6 +299,8 @@ mkdir -p /etc/kubernetes/manifests/
 
 cp -r ../kube-master/*.yaml /etc/kubernetes/manifests/
 
+cp -r ../kube-master/*.service /lib/systemd/system/
+
 # Kubelet Installation
 
 wget https://dl.k8s.io/v1.6.2/kubernetes-server-linux-amd64.tar.gz -P /opt/
