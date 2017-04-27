@@ -297,5 +297,5 @@ tar -xvf kubernetes-server-linux-amd64.tar.gz
 
 rm kubernetes-server-linux-amd64.tar.gz
 
-
+export MASTERID=masterID
 # 7. Add new Minions
