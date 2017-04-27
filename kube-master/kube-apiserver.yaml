@@ -6,7 +6,7 @@ spec:
   hostNetwork: true
   containers:
   - name: kube-apiserver
-    image: gcr.io/google_containers/kube-apiserver:v1.6.1
+    image: gcr.io/google_containers/kube-apiserver:v1.6.2
     command:
     - /bin/sh
     - -c
@@ -17,9 +17,9 @@ spec:
       --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota
       --service-cluster-ip-range=10.0.0.0/16 
       --cluster-name=kube-bmx-dbaas
-      --client-ca-file=/etc/kubernetes/ssl/apiserver/ca.crt
-      --tls-cert-file=/etc/kubernetes/ssl/apiserver/server.cert 
-      --tls-private-key-file=/etc/kubernetes/ssl/apiserver/server.key
+      --client-ca-file=/etc/kubernetes/ssl/ca.pem
+      --tls-cert-file=/etc/kubernetes/ssl/apiserver/apiserver.pem
+      --tls-private-key-file=/etc/kubernetes/ssl/apiserver/apiserver-key.pem
       --secure-port=443 
       --v=2
       --allow-privileged=False 1>>/var/log/kube-apiserver.log 2>&1
@@ -34,7 +34,7 @@ spec:
       hostPort: 8080
       name: local
     volumeMounts:
-    - mountPath: /etc/kubernetes/ssl/apiserver/apiserver
+    - mountPath: /etc/kubernetes/ssl
       name: ssl-certs-kubernetes
       readOnly: true
     - mountPath: /etc/kubernetes
@@ -42,7 +42,7 @@ spec:
       readOnly: true
   volumes:
   - hostPath:
-      path: /etc/kubernetes/ssl/apiserver
+      path: /etc/kubernetes/ssl
     name: ssl-certs-kubernetes
   - hostPath:
       path: /etc/kubernetes
