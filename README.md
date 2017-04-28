@@ -308,11 +308,11 @@ sed -i -e "s/MASTERID/${MASTERID}/g" /lib/systemd/system/kube-kubelet.service;
 
 sudo systemctl daemon-reload
 
-sudo systemctl start kubelet
+sudo systemctl start kube-kubelet
 
-sudo systemctl enable kubelet
+sudo systemctl enable kube-kubelet
 
-sudo systemctl status kubelet -l
+sudo systemctl status kube-kubelet -l
 
 # Kubelet Installation
 
