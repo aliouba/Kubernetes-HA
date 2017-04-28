@@ -301,6 +301,14 @@ cp -r ../kube-master/*.yaml /etc/kubernetes/manifests/
 
 cp -r ../kube-master/*.service /lib/systemd/system/
 
+sudo systemctl daemon-reload
+
+sudo systemctl start kubelet
+
+sudo systemctl enable kubelet
+
+sudo systemctl status kubelet -l
+
 # Kubelet Installation
 
 wget https://dl.k8s.io/v1.6.2/kubernetes-server-linux-amd64.tar.gz -P /opt/
