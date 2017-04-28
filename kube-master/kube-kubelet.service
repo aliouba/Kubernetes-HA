@@ -5,10 +5,10 @@ Wants=docker.service
 
 [Service]
 ExecStart=/opt/kubernetes/server/bin/kubelet \
---address=$THIS_IP \
+--address=THIS_IP \
 --port=10250 \
 --allow-privileged=true \
---hostname_override=$MASTERID.cluster.local \
+--hostname_override=MASTERID.cluster.local \
 --cluster_dns=10.0.0.10 \
 --cluster_domain=cluster.local \
 --pod-manifest-path=/etc/kubernetes/manifests \
