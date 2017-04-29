@@ -314,14 +314,6 @@ sed -i -e "s/THIS_IP/${THIS_IP}/g" /lib/systemd/system/kube-kubelet.service;
 sed -i -e "s/MASTERID/${MASTERID}/g" /lib/systemd/system/kube-kubelet.service;
 
 
-sudo systemctl daemon-reload
-
-sudo systemctl start kube-kubelet
-
-sudo systemctl enable kube-kubelet
-
-sudo systemctl status kube-kubelet -l
-
 # Kubelet Installation
 
 wget https://dl.k8s.io/v1.6.2/kubernetes-server-linux-amd64.tar.gz -P /opt/
@@ -332,5 +324,12 @@ tar -xvf kubernetes-server-linux-amd64.tar.gz
 
 rm kubernetes-server-linux-amd64.tar.gz
 
+sudo systemctl daemon-reload
+
+sudo systemctl start kube-kubelet
+
+sudo systemctl enable kube-kubelet
+
+sudo systemctl status kube-kubelet -l
 
 # 7. Add new Minions
