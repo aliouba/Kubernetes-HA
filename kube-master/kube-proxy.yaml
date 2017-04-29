@@ -11,7 +11,7 @@ spec:
     command:
     - /hyperkube
     - proxy
-    - --master=http://$THIS_IP:8080
+    - --master=http://THIS_IP:8080
     - --proxy-mode=iptables
     securityContext:
       privileged: true
