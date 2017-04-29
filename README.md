@@ -299,6 +299,8 @@ mkdir -p /etc/kubernetes/manifests/
 
 cp -r ../kube-master/*.yaml /etc/kubernetes/manifests/
 
+sed -i -e "s/THIS_IP/${THIS_IP}/g" /etc/kubernetes/manifests/kube-apiserver.yaml;
+
 cp -r ../kube-master/*.service /lib/systemd/system/
 
 sed -i -e "s/THIS_IP/${THIS_IP}/g" /lib/systemd/system/kube-kubelet.service;
