@@ -12,7 +12,7 @@ spec:
     command:
     - /hyperkube
     - scheduler
-    - --master=http://$THIS_IP:8080
+    - --master=http://THIS_IP:8080
     - --leader-elect=true
     livenessProbe:
       httpGet:
