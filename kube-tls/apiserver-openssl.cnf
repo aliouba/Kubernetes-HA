@@ -7,8 +7,13 @@ basicConstraints = CA:FALSE
 keyUsage = nonRepudiation, digitalSignature, keyEncipherment
 subjectAltName = @alt_names
 [alt_names]
+DNS.1 = localhost
 DNS.1 = kubernetes
 DNS.2 = kubernetes.default
 DNS.3 = kubernetes.default.svc
 DNS.4 = kubernetes.default.svc.cluster.local
-DNS.5 = K8S_API_SERVER_HOSTNAME
+IP.1 = 127.0.0.1
+IP.2 = 10.0.0.1
+IP.3 = K8S_API_SERVER_HOSTNAME_1
+IP.4 = K8S_API_SERVER_HOSTNAME_1
+IP.5 = K8S_API_SERVER_HOSTNAME_1
