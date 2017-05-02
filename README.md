@@ -277,13 +277,15 @@ export MASTERID=masterID
 
 export THIS_IP=IP
 
-# TLS Assets (on each master)
+On each match, define the following env vars. E.g, on the first master: export MASTERID=master1 and export THIS_IP=172.31.23.4.
+
+# TLS Assets (on master 1)
 
 git clone https://github.com/aliouba/Kubernetes-HA
 
 cd Kubernetes-HA/kube-tls/
 
-./apiserver.sh IP_MASTER_1 IP_MASTER_2 IP_MASTER_3
+./apiserver.sh 172.31.23.4 172.31.112.238 172.31.16.190
 
 chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
 
