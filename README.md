@@ -277,7 +277,7 @@ export MASTERID=masterID
 
 export THIS_IP=IP
 
-On each match, define the following env vars. E.g, on the first master: export MASTERID=master1 and export THIS_IP=172.31.23.4.
+On each master, define the following env vars. E.g, on the first master: export MASTERID=master1 and export THIS_IP=172.31.23.4.
 
 # TLS Assets (on master 1)
 
