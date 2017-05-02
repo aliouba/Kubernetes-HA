@@ -307,12 +307,13 @@ sed -i -e "s/THIS_IP/${THIS_IP}/g" /etc/kubernetes/manifests/scheduler.yaml;
 
 sed -i -e "s/THIS_IP/${THIS_IP}/g" /etc/kubernetes/manifests/kube-proxy.yaml;
 
+cp -r ../kube-master/*.csv /etc/kubernetes/
+
 cp -r ../kube-master/*.service /lib/systemd/system/
 
 sed -i -e "s/THIS_IP/${THIS_IP}/g" /lib/systemd/system/kube-kubelet.service;
 
 sed -i -e "s/MASTERID/${MASTERID}/g" /lib/systemd/system/kube-kubelet.service;
-
 
 # Kubelet Installation
 
