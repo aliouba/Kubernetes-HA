@@ -273,6 +273,8 @@ curl -L http://master1:2379/v2/keys/kube1/network/subnets | python -mjson.tool
 
 # 6. Master HA
 
+git clone https://github.com/aliouba/Kubernetes-HA
+
 export MASTERID=masterID
 
 export THIS_IP=IP
@@ -281,11 +283,29 @@ On each master, define the following env vars. E.g, on the first master: export 
 
 # TLS Assets (on master 1)
 
-git clone https://github.com/aliouba/Kubernetes-HA
-
 cd Kubernetes-HA/kube-tls/
 
 ./apiserver.sh 172.31.23.4 172.31.112.238 172.31.16.190
+
+chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
+
+chown root:root /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
+
+chmod 600 /etc/kubernetes/ssl/ca-key.pem
+
+chown root:root /etc/kubernetes/ssl/ca-key.pem
+
+scp -r /etc/kubernetes/* root@master2:/etc/kubernetes/
+
+chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
+
+chown root:root /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
+
+chmod 600 /etc/kubernetes/ssl/ca-key.pem
+
+chown root:root /etc/kubernetes/ssl/ca-key.pem
+
+scp -r /etc/kubernetes/* root@master3:/etc/kubernetes/
 
 chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
 
