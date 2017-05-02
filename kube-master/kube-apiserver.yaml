@@ -21,6 +21,10 @@ spec:
     - --tls-cert-file=/etc/kubernetes/ssl/apiserver/apiserver.pem
     - --tls-private-key-file=/etc/kubernetes/ssl/apiserver/apiserver-key.pem
     - --secure_port=443
+    - --basic-auth-file=/etc/kubernetes/basic_auth.csv
+    - --token-auth-file=/etc/kubernetes/known_tokens.csv
+    - --service-account-key-file=/etc/kubernetes/ssl/apiserver/apiserver-key.pem
+    - --apiserver-count=3
     - --admission_control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota
     ports:
     - containerPort: 443
