@@ -283,7 +283,7 @@ git clone https://github.com/aliouba/Kubernetes-HA
 
 cd Kubernetes-HA/kube-tls/
 
-./apiserver.sh $THIS_IP
+./apiserver.sh IP_MASTER_1 IP_MASTER_2 IP_MASTER_3
 
 chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
 
