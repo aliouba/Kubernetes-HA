@@ -137,7 +137,7 @@ curl http://master1:2379/v2/members
 * Subnet length (segements), e.g /24
 * Backend Type: vxlan or udp
 
-# Save Flannel parametes in our ETCD
+# Save Flannel parametes in ETCD
 
 	etcdctl mkdir /kube1/network
 	etcdctl mk /kube1/network/config "{ \"Network\": \"192.168.0.0/16\", \"SubnetLen\": 24, \"Backend\": { \"Type\": \"vxlan\" } }"
@@ -222,69 +222,47 @@ curl http://master1:2379/v2/members
 
 # 6. Master HA
 
-git clone https://github.com/aliouba/Kubernetes-HA
-
-export MASTERID=masterID
-
-export THIS_IP=IP
-
-On each master, define the following env vars. E.g, on the first master: export MASTERID=master1 and export THIS_IP=172.31.23.4.
+	git clone https://github.com/aliouba/Kubernetes-HA
+	export MASTERID=masterID # Master Id, e.g master1
+	export THIS_IP=IP #Master Ip address, e.g 172.31.23.4
 
 # TLS Assets (on master 1)
 
-cd Kubernetes-HA/kube-tls/
+	cd Kubernetes-HA/kube-tls/
 
-./apiserver.sh 172.31.23.4 172.31.112.238 172.31.16.190
+	./apiserver.sh 172.31.23.4 172.31.112.238 172.31.16.190
+	chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
+	chown root:root /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
+	chmod 600 /etc/kubernetes/ssl/ca-key.pem
+	chown root:root /etc/kubernetes/ssl/ca-key.pem
+# Copy TLS assets on mster2 and add the following permissions	
 
-chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
+	scp -r /etc/kubernetes/* root@master2:/etc/kubernetes/
+	chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
+	chown root:root /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
+	chmod 600 /etc/kubernetes/ssl/ca-key.pem
+	chown root:root /etc/kubernetes/ssl/ca-key.pem
 
-chown root:root /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
+# Copy TLS assets on mster3 and add the following permissions	
 
-chmod 600 /etc/kubernetes/ssl/ca-key.pem
-
-chown root:root /etc/kubernetes/ssl/ca-key.pem
-
-scp -r /etc/kubernetes/* root@master2:/etc/kubernetes/
-
-chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
-
-chown root:root /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
-
-chmod 600 /etc/kubernetes/ssl/ca-key.pem
-
-chown root:root /etc/kubernetes/ssl/ca-key.pem
-
-scp -r /etc/kubernetes/* root@master3:/etc/kubernetes/
-
-chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
-
-chown root:root /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
-
-chmod 600 /etc/kubernetes/ssl/ca-key.pem
-
-chown root:root /etc/kubernetes/ssl/ca-key.pem
+	scp -r /etc/kubernetes/* root@master3:/etc/kubernetes/
+	chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
+	chown root:root /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
+	chmod 600 /etc/kubernetes/ssl/ca-key.pem
+	chown root:root /etc/kubernetes/ssl/ca-key.pem
 
 # Apiserver, scheduler and controller Installation
 
-mkdir -p /etc/kubernetes/manifests/
-
-cp -r ../kube-master/*.yaml /etc/kubernetes/manifests/
-
-sed -i -e "s/THIS_IP/${THIS_IP}/g" /etc/kubernetes/manifests/kube-apiserver.yaml;
-
-sed -i -e "s/THIS_IP/${THIS_IP}/g" /etc/kubernetes/manifests/kube-controller.yaml;
-
-sed -i -e "s/THIS_IP/${THIS_IP}/g" /etc/kubernetes/manifests/scheduler.yaml;
-
-sed -i -e "s/THIS_IP/${THIS_IP}/g" /etc/kubernetes/manifests/kube-proxy.yaml;
-
-cp -r ../kube-master/*.csv /etc/kubernetes/
-
-cp -r ../kube-master/*.service /lib/systemd/system/
-
-sed -i -e "s/THIS_IP/${THIS_IP}/g" /lib/systemd/system/kube-kubelet.service;
-
-sed -i -e "s/MASTERID/${MASTERID}/g" /lib/systemd/system/kube-kubelet.service;
+	mkdir -p /etc/kubernetes/manifests/
+	cp -r ../kube-master/*.yaml /etc/kubernetes/manifests/
+	sed -i -e "s/THIS_IP/${THIS_IP}/g" /etc/kubernetes/manifests/kube-apiserver.yaml;
+	sed -i -e "s/THIS_IP/${THIS_IP}/g" /etc/kubernetes/manifests/kube-controller.yaml;
+	sed -i -e "s/THIS_IP/${THIS_IP}/g" /etc/kubernetes/manifests/scheduler.yaml;
+	sed -i -e "s/THIS_IP/${THIS_IP}/g" /etc/kubernetes/manifests/kube-proxy.yaml;
+	cp -r ../kube-master/*.csv /etc/kubernetes/
+	cp -r ../kube-master/*.service /lib/systemd/system/
+	sed -i -e "s/THIS_IP/${THIS_IP}/g" /lib/systemd/system/kube-kubelet.service;
+	sed -i -e "s/MASTERID/${MASTERID}/g" /lib/systemd/system/kube-kubelet.service;
 
 # Kubelet Installation
 
