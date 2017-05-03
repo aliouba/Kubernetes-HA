@@ -121,7 +121,6 @@ curl http://master1:2379/v2/members
 # Enable Services
 
 	systemctl daemon-reload
-
 	systemctl enable container-etcd
 
 # 5. Flannel 
@@ -129,7 +128,6 @@ curl http://master1:2379/v2/members
 # Installation (All nodes) 
 
 	yum install flannel -y
-
 	systemctl enable flanneld
 
 # Determine Flannel Parameters
@@ -147,24 +145,20 @@ curl http://master1:2379/v2/members
 # Configuration (All nodes)
 
 	 vi /etc/sysconfig/flanneld
-
 	FLANNEL_ETCD_ENDPOINTS="http://master1:2379,http://master2:2379,http://master3:2379"
-
 	FLANNEL_ETCD_PREFIX="/kube1/network"
 
 # Start Flannel (All nodes) et restart Docker
 
 	systemctl start flanneld
-
 	systemctl status flanneld -l
-
 	systemctl restart docker
 
 # Test Flannel 
 
-curl -L http://master1:2379/v2/keys/kube1/network/subnets | python -mjson.tool
+	curl -L http://master1:2379/v2/keys/kube1/network/subnets | python -mjson.tool
 
-{
+	{
 
     "action": "get",
     "node": {
@@ -223,8 +217,7 @@ curl -L http://master1:2379/v2/keys/kube1/network/subnets | python -mjson.tool
             }
         ]
     }
-}
-
+	}
 
 
 # 6. Master HA
