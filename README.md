@@ -27,6 +27,20 @@
 	systemctl enable docker
 	systemctl start docker
 	systemctl status docker -l
+# if you are behind a proxy
+
+You have to save in a USB device
+
+	docker save gcr.io/google_containers/hyperkube:v1.6.2  quay.io/coreos/etcd:v3.1.5 gcr.io/google_containers/pause-amd64:3.0 > save.tar
+
+Then, Copy images in your registry. Don't forget to configure your docker host to pull images in the right registry
+
+	docker load --input save.tar
+	docker images
+		REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
+		gcr.io/google_containers/hyperkube     v1.6.2              47c16ab7f7d0        13 days ago         583 MB
+		quay.io/coreos/etcd                    v3.1.5              169a91823cad        5 weeks ago         33.65 MB
+		gcr.io/google_containers/pause-amd64   3.0                 99e59f495ffa        12 months ago       746.9 kB
 
 # 3. ETCD HA
 
