@@ -7,25 +7,18 @@
 # Deactivate Firewalld and iptables-services
 
 	systemctl disable iptables-services firewalld
-
 	systemctl stop iptables-services firewalld
 
 # 2. Prepare the Hosts
 
-# Put Ip/hostname of all cluster nodes (/etc/hosts) in each host:
+# Put Ip/hostname of all cluster nodes in each node:
 
 	echo "
-
 	172.31.23.4 master1
-
 	172.31.112.238 master2
-
 	172.31.16.190 master3
-
 	172.31.115.69 node1
-
 	172.31.106.23 node2
-
 	172.31.21.116 node3" >> /etc/hosts
 
 # Docker Installation on all nodes
