@@ -95,59 +95,42 @@ We will install our ETCD cluster on the master (master1,master2 and master3).
 
 curl http://master1:2379/v2/members
 
-{"members":[
-
-{"id":"ea8af9652ff027","name":"etcd-node-1","peerURLs":["http://master1:2380"],"clientURLs":["http://master1:2379"]},
-
-{"id":"7b6c720f0c92a3cf","name":"etcd-node-2","peerURLs":["http://master2:2380"],"clientURLs":["http://master2:2379"]},	
-
-{"id":"c17975036fa896c0","name":"etcd-node-3","peerURLs":["http://master3:2380"],"clientURLs":["http://master3:2379"]}
-
-]}
+	{"members":[
+	{"id":"ea8af9652ff027","name":"etcd-node-1","peerURLs":["http://master1:2380"],"clientURLs":["http://master1:2379"]},
+	{"id":"7b6c720f0c92a3cf","name":"etcd-node-2","peerURLs":["http://master2:2380"],"clientURLs":["http://master2:2379"]},	
+	{"id":"c17975036fa896c0","name":"etcd-node-3","peerURLs":["http://master3:2380"],"clientURLs":["http://master3:2379"]}
+	]}
 
 # 4. Start ETCD at startup (Master nodes)
 
 # Create the systemd config file
 
-echo "
-
-[Unit]
-
-Description=Docker Container ETCD
-
-Requires=docker.service
-
-After=docker.service
-
-
-[Service]
-
-Restart=always
-
-ExecStart=/usr/bin/docker start etcd
-
-ExecStop=/usr/bin/docker stop -t etcd
-
-
-[Install]
-
-WantedBy=default.target
-
-" > /etc/systemd/system/container-etcd.service
+	echo "
+	[Unit]
+	Description=Docker Container ETCD
+	Requires=docker.service
+	After=docker.service
+	[Service]
+	Restart=always
+	ExecStart=/usr/bin/docker start etcd
+	ExecStop=/usr/bin/docker stop -t etcd
+	[Install]
+	WantedBy=default.target
+	" > /etc/systemd/system/container-etcd.service
 
 # Enable Services
 
-systemctl daemon-reload
+	systemctl daemon-reload
 
-systemctl enable container-etcd
+	systemctl enable container-etcd
 
 # 5. Flannel 
 
 # Installation (All nodes) 
 
-yum install flannel -y
+	yum install flannel -y
 
-systemctl enable flanneld
+	systemctl enable flanneld
 
 # Determine Flannel Parameters
 
@@ -158,25 +141,24 @@ systemctl enable flanneld
 
 # Save Flannel parametes in our ETCD
 
-etcdctl mkdir /kube1/network
-
-etcdctl mk /kube1/network/config "{ \"Network\": \"192.168.0.0/16\", \"SubnetLen\": 24, \"Backend\": { \"Type\": \"vxlan\" } }"
+	etcdctl mkdir /kube1/network
+	etcdctl mk /kube1/network/config "{ \"Network\": \"192.168.0.0/16\", \"SubnetLen\": 24, \"Backend\": { \"Type\": \"vxlan\" } }"
 
 # Configuration (All nodes)
 
- vi /etc/sysconfig/flanneld
- 
-FLANNEL_ETCD_ENDPOINTS="http://master1:2379,http://master2:2379,http://master3:2379"
+	 vi /etc/sysconfig/flanneld
 
-FLANNEL_ETCD_PREFIX="/kube1/network"
+	FLANNEL_ETCD_ENDPOINTS="http://master1:2379,http://master2:2379,http://master3:2379"
+
+	FLANNEL_ETCD_PREFIX="/kube1/network"
 
 # Start Flannel (All nodes) et restart Docker
 
-systemctl start flanneld
+	systemctl start flanneld
 
-systemctl status flanneld -l
+	systemctl status flanneld -l
 
-systemctl restart docker
+	systemctl restart docker
 
 # Test Flannel 
 
