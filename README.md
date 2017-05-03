@@ -33,7 +33,7 @@ You have to save in a USB device
 
 	docker save gcr.io/google_containers/hyperkube:v1.6.2  quay.io/coreos/etcd:v3.1.5 gcr.io/google_containers/pause-amd64:3.0 > save.tar
 
-Then, Copy images in your registry. Don't forget to configure your docker host to pull images in the right registry
+Then, copy images in your registry. Don't forget to configure your docker host to pull images in the right registry.
 
 	docker load --input save.tar
 	docker images
