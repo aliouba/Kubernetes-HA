@@ -1,6 +1,6 @@
 # 1. Prerequisites
 
-# Deactivate SELINUS
+# Deactivate SELINUX
 
 	setenforce 0 #(Put SELINUX to disabled in /etc/selinux/config then restart the VM)
 
