@@ -37,3 +37,6 @@ WORKER_IP=${WORKER_IP} openssl x509 -req \
 	-days 365 \
 	-extensions v3_req \
 	-extfile /etc/kubernetes/ssl/worker${WORKER_ID}/worker-openssl.cnf;
+
+sudo chmod 600 /etc/kubernetes/ssl/worker${WORKER_ID}/*-key.pem
+sudo chown root:root /etc/kubernetes/ssl/worker${WORKER_ID}/*-key.pem
