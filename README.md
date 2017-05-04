@@ -295,5 +295,5 @@ curl http://master1:2379/v2/members
 
 	git clone https://github.com/aliouba/Kubernetes-HA
 	cd Kubernetes-HA/kube-tls/
-	./kubelet.sh worker1 172.31.115.69
+	./kubelet.sh 1 172.31.115.69
 
