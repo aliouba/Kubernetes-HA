@@ -1,0 +1,23 @@
+[Unit]
+Description=Kubernetes Kubelet
+After=docker.service
+Wants=docker.service
+
+[Service]
+ExecStart=/opt/kubernetes/kubelet \
+--address=workerIP \
+--port=10250 \
+--allow-privileged=true \
+--hostname_override=minionWORKER_ID.cluster.local \
+--cluster_dns=10.0.0.10 \
+--cluster_domain=cluster.local \
+--register-node=true \
+--api_servers=https://masterHa \
+--tls-cert-file=/etc/kubernetes/ssl/workerWORKER_ID/worker.pem \
+--tls-private-key-file=/etc/kubernetes/ssl/workerWORKER_ID/worker-key.pem
+--logtostderr=true
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
