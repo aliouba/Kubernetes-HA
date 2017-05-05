@@ -306,4 +306,4 @@ Copy Sytemd files
 	cp -r ../kube-worker/*.service /lib/systemd/system/
 	sed -i -e "s/workerID/${workerID}/g" /lib/systemd/system/kube-kubelet.service;
 	sed -i -e "s/WorkerIP/${WorkerIP}/g" /lib/systemd/system/kube-kubelet.service;
-	sed -i -e "s/WorkerIP/${WorkerIP}/g" /lib/systemd/system/kube-kubelet.service;
+	sed -i -e "s/lb/${lb}/g" /lib/systemd/system/kube-proxy.service;
