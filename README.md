@@ -295,7 +295,4 @@ curl http://master1:2379/v2/members
 
 	git clone https://github.com/aliouba/Kubernetes-HA
 	cd Kubernetes-HA/kube-tls/
-	./kubelet.sh 1 172.31.115.69
-	
-	chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
-	chown root:root /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
+	./kubelet.sh <worker ID> <worker IP>
