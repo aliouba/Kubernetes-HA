@@ -291,8 +291,11 @@ curl http://master1:2379/v2/members
 
 # 7. Add new Minions
 
+	export workerID=1
+	export WorkerIP=172.31.115.69
+
 # TLS Assets
 
 	git clone https://github.com/aliouba/Kubernetes-HA
 	cd Kubernetes-HA/kube-tls/
-	./kubelet.sh <worker ID> <worker IP>
+	./kubelet.sh $workerID $WorkerIP
