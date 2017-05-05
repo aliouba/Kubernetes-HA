@@ -293,9 +293,17 @@ curl http://master1:2379/v2/members
 
 	export workerID=1
 	export WorkerIP=172.31.115.69
+	export lb=node3
 
 # TLS Assets
 
 	git clone https://github.com/aliouba/Kubernetes-HA
 	cd Kubernetes-HA/kube-tls/
 	./kubelet.sh $workerID $WorkerIP
+
+Copy Sytemd files
+
+	cp -r ../kube-worker/*.service /lib/systemd/system/
+	sed -i -e "s/workerID/${workerID}/g" /lib/systemd/system/kube-kubelet.service;
+	sed -i -e "s/WorkerIP/${WorkerIP}/g" /lib/systemd/system/kube-kubelet.service;
+	sed -i -e "s/WorkerIP/${WorkerIP}/g" /lib/systemd/system/kube-kubelet.service;
