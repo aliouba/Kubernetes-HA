@@ -301,9 +301,19 @@ curl http://master1:2379/v2/members
 	cd Kubernetes-HA/kube-tls/
 	./kubelet.sh $workerID $WorkerIP
 
-Copy Sytemd files
+# Copy Sytemd files
 
 	cp -r ../kube-worker/*.service /lib/systemd/system/
 	sed -i -e "s/workerID/${workerID}/g" /lib/systemd/system/kube-kubelet.service;
 	sed -i -e "s/WorkerIP/${WorkerIP}/g" /lib/systemd/system/kube-kubelet.service;
 	sed -i -e "s/lb/${lb}/g" /lib/systemd/system/kube-proxy.service;
+# Kubelet Installation
+
+	wget https://dl.k8s.io/v1.6.2/kubernetes-server-linux-amd64.tar.gz -P /opt/
+	cd /opt
+	tar -xvf kubernetes-server-linux-amd64.tar.gz
+	rm kubernetes-server-linux-amd64.tar.gz
+	sudo systemctl daemon-reload
+	sudo systemctl start kube-kubelet
+	sudo systemctl enable kube-kubelet
+	sudo systemctl status kube-kubelet -l
