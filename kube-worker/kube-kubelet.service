@@ -13,6 +13,7 @@ ExecStart=/usr/local/bin/kubelet \
 --cluster_domain=cluster.local \
 --register-node=true \
 --api_servers=http://lb \
+--kubeconfig=/etc/kubernetes/workerworkerID/kubeconfig.yaml \
 --tls-cert-file=/etc/kubernetes/ssl/workerworkerID/worker.pem \
 --tls-private-key-file=/etc/kubernetes/ssl/workerworkerID/worker-key.pem
 --logtostderr=true
