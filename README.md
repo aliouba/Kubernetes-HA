@@ -306,12 +306,15 @@ curl http://master1:2379/v2/members
 # Copy Sytemd files
 
 	cp -r ../kube-worker/*.service /lib/systemd/system/
-	cp -r ../kube-worker/kubeconfig.yaml /etc/kubernetes/worker${workerID}/
 	sed -i -e "s/workerID/${workerID}/g" /lib/systemd/system/kube-kubelet.service;
 	sed -i -e "s/workerIP/${workerIP}/g" /lib/systemd/system/kube-kubelet.service;
 	sed -i -e "s/lb/${lb}/g" /lib/systemd/system/kube-kubelet.service;
 	sed -i -e "s/lb/${lb}/g" /lib/systemd/system/kube-proxy.service;
 	sed -i -e "s/workerID/${workerID}/g" /lib/systemd/system/kube-proxy.service;
+
+	mkdir -p /etc/kubernetes/worker${workerID}
+	cp -r ../kube-worker/kubeconfig.yaml /etc/kubernetes/worker${workerID}/
+	sed -i -e "s/workerID/${workerID}/g" /etc/kubernetes/worker${workerID}/kubeconfig.yaml;
 # Kubelet Installation
 
 	wget https://dl.k8s.io/v1.6.2/kubernetes-server-linux-amd64.tar.gz -P /opt/
