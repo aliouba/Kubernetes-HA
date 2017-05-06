@@ -7,4 +7,4 @@ basicConstraints = CA:FALSE
 keyUsage = nonRepudiation, digitalSignature, keyEncipherment
 subjectAltName = @alt_names
 [alt_names]
-IP.1 = WORKER_IP
+IP.1 = WorkerIP
