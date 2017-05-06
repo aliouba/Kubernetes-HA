@@ -306,6 +306,7 @@ curl http://master1:2379/v2/members
 # Copy Sytemd files
 
 	cp -r ../kube-worker/*.service /lib/systemd/system/
+	cp -r ../kube-worker/kubeconfig.yaml /etc/kubernetes/worker${workerID}/
 	sed -i -e "s/workerID/${workerID}/g" /lib/systemd/system/kube-kubelet.service;
 	sed -i -e "s/workerIP/${workerIP}/g" /lib/systemd/system/kube-kubelet.service;
 	sed -i -e "s/lb/${lb}/g" /lib/systemd/system/kube-kubelet.service;
