@@ -307,7 +307,7 @@ curl http://master1:2379/v2/members
 
 	cp -r ../kube-worker/*.service /lib/systemd/system/
 	sed -i -e "s/workerID/${workerID}/g" /lib/systemd/system/kube-kubelet.service;
-	sed -i -e "s/WorkerIP/${workerIP}/g" /lib/systemd/system/kube-kubelet.service;
+	sed -i -e "s/workerIP/${workerIP}/g" /lib/systemd/system/kube-kubelet.service;
 	sed -i -e "s/lb/${lb}/g" /lib/systemd/system/kube-kubelet.service;
 	sed -i -e "s/lb/${lb}/g" /lib/systemd/system/kube-proxy.service;
 # Kubelet Installation
