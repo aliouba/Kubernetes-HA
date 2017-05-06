@@ -5,7 +5,7 @@ Wants=docker.service
 
 [Service]
 ExecStart=/usr/local/bin/kube-proxy \
---master=masters \
+--master=http://lb \
 --kubeconfig=/etc/kubernetes/workerworkerID/kubeconfig.yaml \
 --logtostderr=true
 Restart=on-failure
