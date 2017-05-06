@@ -301,6 +301,7 @@ curl http://master1:2379/v2/members
 
 	git clone https://github.com/aliouba/Kubernetes-HA
 	cd Kubernetes-HA/kube-tls/
+	chmod +x kubelet.sh
 	./kubelet.sh $workerID $workerIP
 
 # Copy Sytemd files
