@@ -4,7 +4,7 @@ After=docker.service
 Wants=docker.service
 
 [Service]
-ExecStart=/opt/kubernetes/server/bin/kubelet \
+ExecStart=/usr/local/bin/kubelet \
 --address=THIS_IP \
 --port=10250 \
 --allow-privileged=true \
