@@ -295,7 +295,7 @@ curl http://master1:2379/v2/members
 
 	export workerID=1
 	export workerIP=172.31.115.69
-	export masters=node3
+	export lb=node3
 
 # TLS Assets
 
@@ -310,6 +310,7 @@ curl http://master1:2379/v2/members
 	sed -i -e "s/workerIP/${workerIP}/g" /lib/systemd/system/kube-kubelet.service;
 	sed -i -e "s/lb/${lb}/g" /lib/systemd/system/kube-kubelet.service;
 	sed -i -e "s/lb/${lb}/g" /lib/systemd/system/kube-proxy.service;
+	sed -i -e "s/workerID/${workerID}/g" /lib/systemd/system/kube-kubelet.service;
 # Kubelet Installation
 
 	wget https://dl.k8s.io/v1.6.2/kubernetes-server-linux-amd64.tar.gz -P /opt/
