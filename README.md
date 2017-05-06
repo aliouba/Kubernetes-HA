@@ -295,7 +295,7 @@ curl http://master1:2379/v2/members
 
 	export workerID=1
 	export WorkerIP=172.31.115.69
-	export lb=node3
+	export lb=http://node3
 
 # TLS Assets
 
