@@ -1,0 +1,15 @@
+[Unit]
+Description=Kubernetes proxy server
+After=docker.service
+Wants=docker.service
+
+[Service]
+ExecStart=/opt/kubernetes/kube-proxy \
+--master=lb \
+--kubeconfig=/etc/kubernetes/workerworkerID/worker-kubeconfig.yaml \
+--logtostderr=true
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
