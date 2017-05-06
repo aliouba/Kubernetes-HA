@@ -294,20 +294,20 @@ curl http://master1:2379/v2/members
 # 7. Add new Minions
 
 	export workerID=1
-	export WorkerIP=172.31.115.69
+	export workerIP=172.31.115.69
 	export lb=http://node3
 
 # TLS Assets
 
 	git clone https://github.com/aliouba/Kubernetes-HA
 	cd Kubernetes-HA/kube-tls/
-	./kubelet.sh $workerID $WorkerIP
+	./kubelet.sh $workerID $workerIP
 
 # Copy Sytemd files
 
 	cp -r ../kube-worker/*.service /lib/systemd/system/
 	sed -i -e "s/workerID/${workerID}/g" /lib/systemd/system/kube-kubelet.service;
-	sed -i -e "s/WorkerIP/${WorkerIP}/g" /lib/systemd/system/kube-kubelet.service;
+	sed -i -e "s/WorkerIP/${workerIP}/g" /lib/systemd/system/kube-kubelet.service;
 	sed -i -e "s/lb/${lb}/g" /lib/systemd/system/kube-kubelet.service;
 	sed -i -e "s/lb/${lb}/g" /lib/systemd/system/kube-proxy.service;
 # Kubelet Installation
