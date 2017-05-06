@@ -284,6 +284,8 @@ curl http://master1:2379/v2/members
 	cd /opt
 	tar -xvf kubernetes-server-linux-amd64.tar.gz
 	rm kubernetes-server-linux-amd64.tar.gz
+	mv /opt/kubernetes/server/bin/kubectl /opt/kubernetes/server/bin/kubelet /usr/local/bin/
+	rm -rf /opt/kubernetes
 	sudo systemctl daemon-reload
 	sudo systemctl start kube-kubelet
 	sudo systemctl enable kube-kubelet
