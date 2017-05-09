@@ -11,6 +11,15 @@
 
 # 2. Prepare the Hosts
 
+||Components|
+|----|-----------|
+|lb |Haproxy|
+|master1 |docker, ETCD, Flannel, kubelet, kube-proxy, kube-apiserver, kube-controller-manager, kube-scheduler|
+|master2|docker, ETCD, Flannel, kubelet, kube-proxy, kube-apiserver, kube-controller-manager, kube-scheduler|
+|master3|docker, ETCD, Flannel, kubelet, kube-proxy, kube-apiserver, kube-controller-manager, kube-scheduler|
+|node1|docker, Flannel, kubelet, kube-proxy|
+|node2|docker, Flannel, kubelet, kube-proxy|
+
 # Put Ip/hostname of all cluster nodes in each node:
 
 	echo "
