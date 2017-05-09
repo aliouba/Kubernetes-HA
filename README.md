@@ -22,15 +22,15 @@
 |node1|docker, Flannel, kubelet, kube-proxy|
 |node2|docker, Flannel, kubelet, kube-proxy|
 
-# Put Ip/hostname of all cluster nodes in each node:
+# Put Ip/hostname of all cluster nodes in each node, e.g:
 
 	echo "
-	172.31.23.4 master1
-	172.31.112.238 master2
-	172.31.16.190 master3
-	172.31.115.69 node1
-	172.31.106.23 node2
-	172.31.21.116 node3" >> /etc/hosts
+	172.31.22.158 master1
+	172.31.113.50 master2
+	172.31.116.25 master3
+	172.31.109.29 node1
+	172.31.123.255 node2
+	172.31.106.167 lb" >> /etc/hosts
 
 # Docker Installation on all nodes
 
