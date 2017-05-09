@@ -239,13 +239,13 @@ curl http://master1:2379/v2/members
 
 	git clone https://github.com/aliouba/Kubernetes-HA
 	export MASTERID=masterID # Master Id, e.g master1
-	export THIS_IP=IP #Master Ip address, e.g 172.31.23.4
+	export THIS_IP=IP #Master Ip address, e.g 172.31.22.158
 
 # TLS Assets (on master 1)
 
 	cd Kubernetes-HA/kube-tls/
 
-	./apiserver.sh 172.31.23.4 172.31.112.238 172.31.16.190
+	./apiserver.sh 172.31.22.158 172.31.113.50 172.31.116.25 172.31.106.167
 	chmod 600 /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
 	chown root:root /etc/kubernetes/ssl/apiserver/apiserver*-key.pem
 	chmod 600 /etc/kubernetes/ssl/ca-key.pem
