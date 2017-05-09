@@ -2,7 +2,7 @@
 
 # Deactivate SELINUX
 
-	setenforce 0 #(Put SELINUX to disabled in /etc/selinux/config then restart the VM)
+	setenforce 0 #(sed -i -e "s/enforcing/disabled/g" /etc/selinux/config)
 
 # Deactivate Firewalld and iptables-services
 
