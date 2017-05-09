@@ -316,7 +316,7 @@ curl http://master1:2379/v2/members
 	mkdir -p /etc/kubernetes/worker${workerID}
 	cp -r ../kube-worker/kubeconfig.yaml /etc/kubernetes/worker${workerID}/
 	sed -i -e "s/workerID/${workerID}/g" /etc/kubernetes/worker${workerID}/kubeconfig.yaml;
-# Kubelet Installation
+# Kubelet and Kube-proxy Installation
 
 	wget https://dl.k8s.io/v1.6.2/kubernetes-server-linux-amd64.tar.gz -P /opt/
 	cd /opt
@@ -328,3 +328,8 @@ curl http://master1:2379/v2/members
 	sudo systemctl start kube-kubelet
 	sudo systemctl enable kube-kubelet
 	sudo systemctl status kube-kubelet -l
+
+
+	sudo systemctl start kube-proxy
+	sudo systemctl enable kube-proxy
+	sudo systemctl status kube-proxy -l
