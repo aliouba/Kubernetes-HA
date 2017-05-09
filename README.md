@@ -182,67 +182,57 @@ curl http://master1:2379/v2/members
 # Test Flannel 
 
 	curl -L http://master1:2379/v2/keys/kube1/network/subnets | python -mjson.tool
-
-	{
-
-    "action": "get",
-    "node": {
-        "createdIndex": 19,
-        "dir": true,
-        "key": "/kube1/network/subnets",
-        "modifiedIndex": 19,
-        "nodes": [
-            {
-                "createdIndex": 23,
-                "expiration": "2017-04-26T12:24:13.459780122Z",
-                "key": "/kube1/network/subnets/192.168.74.0-24",
-                "modifiedIndex": 23,
-                "ttl": 86295,
-                "value": "{\"PublicIP\":\"172.31.115.69\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"ea:13:52:35:7a:ac\"}}"
-            },
-            {
-                "createdIndex": 25,
-                "expiration": "2017-04-26T12:24:16.013425132Z",
-                "key": "/kube1/network/subnets/192.168.76.0-24",
-                "modifiedIndex": 25,
-                "ttl": 86298,
-                "value": "{\"PublicIP\":\"172.31.106.23\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"0e:8d:92:fe:a3:ac\"}}"
-            },
-            {
-                "createdIndex": 26,
-                "expiration": "2017-04-26T12:24:18.133121342Z",
-                "key": "/kube1/network/subnets/192.168.89.0-24",
-                "modifiedIndex": 26,
-                "ttl": 86300,
-                "value": "{\"PublicIP\":\"172.31.21.116\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"f2:f3:0c:6e:a3:62\"}}"
-            },
-            {
-                "createdIndex": 19,
-                "expiration": "2017-04-26T12:17:35.129928801Z",
-                "key": "/kube1/network/subnets/192.168.87.0-24",
-                "modifiedIndex": 19,
-                "ttl": 85897,
-                "value": "{\"PublicIP\":\"172.31.23.4\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"72:37:cd:18:58:60\"}}"
-            },
-            {
-                "createdIndex": 21,
-                "expiration": "2017-04-26T12:24:06.285121518Z",
-                "key": "/kube1/network/subnets/192.168.13.0-24",
-                "modifiedIndex": 21,
-                "ttl": 86288,
-                "value": "{\"PublicIP\":\"172.31.112.238\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"32:db:4f:2b:65:10\"}}"
-            },
-            {
-                "createdIndex": 22,
-                "expiration": "2017-04-26T12:24:10.814833173Z",
-                "key": "/kube1/network/subnets/192.168.75.0-24",
-                "modifiedIndex": 22,
-                "ttl": 86293,
-                "value": "{\"PublicIP\":\"172.31.16.190\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"d6:0c:dc:97:b6:65\"}}"
-            }
-        ]
-    }
-	}
+		{
+		    "action": "get",
+		    "node": {
+			"createdIndex": 14,
+			"dir": true,
+			"key": "/kube1/network/subnets",
+			"modifiedIndex": 14,
+			"nodes": [
+			    {
+				"createdIndex": 14,
+				"expiration": "2017-05-10T18:53:20.544002297Z",
+				"key": "/kube1/network/subnets/192.168.80.0-24",
+				"modifiedIndex": 14,
+				"ttl": 86300,
+				"value": "{\"PublicIP\":\"172.31.22.158\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"62:b5:49:7d:31:db\"}}"
+			    },
+			    {
+				"createdIndex": 16,
+				"expiration": "2017-05-10T18:53:47.380825901Z",
+				"key": "/kube1/network/subnets/192.168.88.0-24",
+				"modifiedIndex": 16,
+				"ttl": 86327,
+				"value": "{\"PublicIP\":\"172.31.113.50\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"d2:73:5c:4b:47:b7\"}}"
+			    },
+			    {
+				"createdIndex": 17,
+				"expiration": "2017-05-10T18:53:49.47097372Z",
+				"key": "/kube1/network/subnets/192.168.54.0-24",
+				"modifiedIndex": 17,
+				"ttl": 86329,
+				"value": "{\"PublicIP\":\"172.31.116.25\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"f6:cf:70:8b:0c:09\"}}"
+			    },
+			    {
+				"createdIndex": 18,
+				"expiration": "2017-05-10T18:53:58.937946948Z",
+				"key": "/kube1/network/subnets/192.168.8.0-24",
+				"modifiedIndex": 18,
+				"ttl": 86339,
+				"value": "{\"PublicIP\":\"172.31.109.29\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"36:b0:31:fd:40:56\"}}"
+			    },
+			    {
+				"createdIndex": 20,
+				"expiration": "2017-05-10T18:54:02.559740492Z",
+				"key": "/kube1/network/subnets/192.168.99.0-24",
+				"modifiedIndex": 20,
+				"ttl": 86342,
+				"value": "{\"PublicIP\":\"172.31.123.255\",\"BackendType\":\"vxlan\",\"BackendData\":{\"VtepMAC\":\"d6:2b:a0:00:c3:09\"}}"
+			    }
+			]
+		    }
+		}
 
 
 # 6. Master HA
