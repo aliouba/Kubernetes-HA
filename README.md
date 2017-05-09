@@ -291,8 +291,8 @@ curl http://master1:2379/v2/members
 # 7. Add new Minions
 
 	export workerID=1
-	export workerIP=172.31.115.69
-	export lb=node3
+	export workerIP=172.31.109.29
+	export lb=172.31.106.167
 
 # TLS Assets
 
