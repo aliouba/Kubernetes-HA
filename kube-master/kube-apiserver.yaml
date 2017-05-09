@@ -13,7 +13,6 @@ spec:
     - /hyperkube
     - apiserver
     - --bind-address=0.0.0.0
-    - --insecure-bind-address=THIS_IP
     - --etcd_servers=http://master1:2379,http://master2:2379,http://master3:2379
     - --allow-privileged=true
     - --service-cluster-ip-range=10.0.0.1/24
