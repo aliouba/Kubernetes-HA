@@ -10,6 +10,7 @@ ExecStart=/usr/local/bin/kubelet \
 --kubeconfig=/etc/kubernetes/workerworkerID/kubeconfig.yaml \
 --container-runtime=docker \
 --cluster_domain=cluster.local \
+--cluster_dns=10.0.0.10 \
 --port=10250 \
 --allow-privileged=true \
 --hostname_override=minionworkerID.cluster.local \
