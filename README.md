@@ -11,6 +11,8 @@
 
 # 2. Prepare the Hosts
 
+# Components
+
 ||Components|
 |----|-----------|
 |lb |Haproxy|
