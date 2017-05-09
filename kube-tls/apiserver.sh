@@ -5,23 +5,26 @@
 # The hostname of the master node load balancer. You may want to change
 # the `openssl-config/apiserver-openssl.cnf` depending on how you expect
 # nodes and admins to reach the Kubernetes API server.
-K8S_API_SERVER_HOSTNAME_1=$1
+K8S_API_SERVER_IP_1=$1
 
-K8S_API_SERVER_HOSTNAME_2=$2
+K8S_API_SERVER_IP_2=$2
 
-K8S_API_SERVER_HOSTNAME_3=$3
+K8S_API_SERVER_IP_3=$3
+
+K8S_ELB_SERVER_IP=$4
 
 mkdir -p /etc/kubernetes/ssl/apiserver/;
 cp apiserver-openssl.cnf /etc/kubernetes/ssl/apiserver/;
 cp ca.pem /etc/kubernetes/ssl/;
 cp ca-key.pem /etc/kubernetes/ssl/;
 # Place the actual api server hostname in the open ssl config file.
-sed -i -e "s/K8S_API_SERVER_HOSTNAME_1/${K8S_API_SERVER_HOSTNAME_1}/g" /etc/kubernetes/ssl/apiserver/apiserver-openssl.cnf;
+sed -i -e "s/K8S_API_SERVER_IP_1/${K8S_API_SERVER_IP_1}/g" /etc/kubernetes/ssl/apiserver/apiserver-openssl.cnf;
 
-sed -i -e "s/K8S_API_SERVER_HOSTNAME_2/${K8S_API_SERVER_HOSTNAME_2}/g" /etc/kubernetes/ssl/apiserver/apiserver-openssl.cnf;
+sed -i -e "s/K8S_API_SERVER_IP_2/${K8S_API_SERVER_IP_2}/g" /etc/kubernetes/ssl/apiserver/apiserver-openssl.cnf;
 
-sed -i -e "s/K8S_API_SERVER_HOSTNAME_3/${K8S_API_SERVER_HOSTNAME_3}/g" /etc/kubernetes/ssl/apiserver/apiserver-openssl.cnf;
+sed -i -e "s/K8S_API_SERVER_IP_3/${K8S_API_SERVER_IP_3}/g" /etc/kubernetes/ssl/apiserver/apiserver-openssl.cnf;
 
+sed -i -e "s/K8S_ELB_SERVER_IP/${K8S_ELB_SERVER_IP}/g" /etc/kubernetes/ssl/apiserver/apiserver-openssl.cnf;
 
 openssl genrsa -out /etc/kubernetes/ssl/apiserver/apiserver-key.pem 2048;
 
