@@ -277,7 +277,7 @@ curl http://master1:2379/v2/members
 	cp -r ../kube-master/*.service /lib/systemd/system/
 	sed -i -e "s/THIS_IP/${THIS_IP}/g" /lib/systemd/system/kube-kubelet.service;
 
-	wget https://dl.k8s.io/v1.6.2/kubernetes-server-linux-amd64.tar.gz -P /opt/
+	wget https://dl.k8s.io/v1.6.4/kubernetes-server-linux-amd64.tar.gz -P /opt/
 	cd /opt
 	tar -xvf kubernetes-server-linux-amd64.tar.gz
 	rm kubernetes-server-linux-amd64.tar.gz
@@ -316,7 +316,7 @@ curl http://master1:2379/v2/members
 
 # Kubelet and Kube-proxy Installation
 
-	wget https://dl.k8s.io/v1.6.2/kubernetes-server-linux-amd64.tar.gz -P /opt/
+	wget https://dl.k8s.io/v1.6.4/kubernetes-server-linux-amd64.tar.gz -P /opt/
 	cd /opt
 	tar -xvf kubernetes-server-linux-amd64.tar.gz
 	rm kubernetes-server-linux-amd64.tar.gz
