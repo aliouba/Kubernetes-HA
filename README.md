@@ -2,12 +2,21 @@
 
 # Deactivate SELINUX
 
-	setenforce 0 #(sed -i -e "s/enforcing/disabled/g" /etc/selinux/config)
-
+	setenforce 0 
+	sed -i -e "s/enforcing/disabled/g" /etc/selinux/config
+	
 # Deactivate Firewalld and iptables-services
 
 	systemctl disable iptables-services firewalld
 	systemctl stop iptables-services firewalld
+
+# Ensure that traffic will not be routed incorrectly by bypassing iptables 
+
+	cat <<EOF >  /etc/sysctl.d/k8s.conf
+	net.bridge.bridge-nf-call-ip6tables = 1
+	net.bridge.bridge-nf-call-iptables = 1
+	EOF
+	sysctl --system
 
 # 2. Prepare the Hosts
 
